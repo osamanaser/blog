@@ -1,0 +1,9 @@
+$brand-primary: darken(#428bca, 20%);
+$icon-font-path: "~bootstrap-sass/assets/fonts/bootstrap/";
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+p {
+  color: red;
+}

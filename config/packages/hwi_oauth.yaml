@@ -1,0 +1,23 @@
+hwi_oauth:
+  firewall_names: [secured_area]
+  resource_owners:
+    auth0:
+      type:                oauth2
+      class:               'App\Auth0ResourceOwner'
+      client_id:           "%env(AUTH0_CLIENT_ID)%"
+      client_secret:       "%env(AUTH0_CLIENT_SECRET)%"
+      base_url:            "https://%env(AUTH0_DOMAIN)%"
+      scope: "openid profile"
+    facebook:
+      type:                facebook
+      client_id:           463469281075544
+      client_secret:       494c517c1b6462589c6542a2a00af3e0
+      options:
+        display: popup
+        auth_type: rerequest
+        csrf: true
+    google:
+      type:                google
+      scope:               https://www.googleapis.com/auth/userinfo.email
+      client_id:           124263256858-p7f43g7ucb4lr6gnfuec6i6ldtpkekh6.apps.googleusercontent.com
+      client_secret:       PvZ6vwCQmIncPX9r-etqEEFt

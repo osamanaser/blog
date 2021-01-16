@@ -1,0 +1,32 @@
+security:
+    providers:
+        hwi:
+            id: hwi_oauth.user.provider
+#        fb_google_provider:
+#            id: App\UserProvider\SocialMediaProvider
+#        chain_providers:
+#            chain:
+#                providers: [hwi, fb_google_provider]
+    firewalls:
+        secured_area:
+            anonymous: ~
+            oauth:
+                resource_owners:
+                    auth0: "/auth0/callback"
+                    facebook:         "/secured/login_facebook"
+                    google:           "/secured/login_google"
+                login_path:        /login
+                use_forward:       false
+                failure_path:      /login
+
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider
+            logout:
+                path:   /auth0/logout
+                target: /
+
+        main:
+            anonymous: ~
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/secured, roles: ROLE_OAUTH_USER }
